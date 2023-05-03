@@ -1,7 +1,9 @@
 import React from "react";
 
 const Completed = () => {
-  return 
+  return (
+    "hi"
+  );
 }
 
 export default Completed;
