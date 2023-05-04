@@ -3,6 +3,6 @@ import Configuration from "../../components/Configuration/Configuration";
 
 const ConfigurationPage = () => {
   return <Configuration />;
-}
+};
 
 export default ConfigurationPage;

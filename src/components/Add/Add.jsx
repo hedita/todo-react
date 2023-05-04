@@ -1,7 +1,7 @@
 import React from "react";
 
 const Add = () => {
-  return 
-}
+  return "add";
+};
 
 export default Add;
