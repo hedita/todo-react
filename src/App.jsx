@@ -7,15 +7,17 @@ import UnCompletedPage from "./pages/UnCompletedPage/UnCompletedPage";
 import ConfigurationPage from "./pages/ConfigurationPage/ConfigurationPage";
 
 const App = () => {
-  <BrowserRouter>
-    <Routes>
-      <Route path="/add" element={<AddPage />} />
-      <Route path="/" element={<AllPage />} />
-      <Route path="/completed" element={<CompletedPage />} />
-      <Route path="/uncompleted" element={<UnCompletedPage />} />
-      <Route path="/configuration-page" element={<ConfigurationPage />} />
-    </Routes>
-  </BrowserRouter>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/add" element={<AddPage />} />
+        <Route path="/" element={<AllPage />} />
+        <Route path="/completed" element={<CompletedPage />} />
+        <Route path="/uncompleted" element={<UnCompletedPage />} />
+        <Route path="/configuration-page" element={<ConfigurationPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

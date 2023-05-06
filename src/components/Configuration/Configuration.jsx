@@ -1,7 +1,7 @@
 import React from "react";
 
 const Configuration = () => {
-  return "config";
+  return <li className="filter-item">Configuration</li>;
 };
 
 export default Configuration;

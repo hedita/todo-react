@@ -1,7 +1,7 @@
 import React from "react";
 
 const Add = () => {
-  return "add";
+  return <li className="filter-item">Add</li>;
 };
 
 export default Add;
