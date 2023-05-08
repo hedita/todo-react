@@ -33,7 +33,12 @@ ul {
 }
  
 .filter-item {
-  // color: $primary-color;
+  color: $primary-color;
 	margin-left: $spacing-xxlarge;
 	text-align: center;
+}
+
+.navbar-item {
+  text-decoration: none;
+  color: $primary-color;
 }

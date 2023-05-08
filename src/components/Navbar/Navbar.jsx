@@ -7,19 +7,29 @@ const Navbar = () => {
     <nav className="navbar">
       <ul className="filter-list">
         <li className="filter-item">
-          <Link to="/Add">Add</Link>
+          <Link className="navbar-item" to="/Add">
+            Add
+          </Link>
         </li>
         <li className="filter-item">
-          <Link to="/">All</Link>
+          <Link className="navbar-item" to="/">
+            All
+          </Link>
         </li>
         <li className="filter-item">
-          <Link to="/Completed">Completed</Link>
+          <Link className="navbar-item" to="/Completed">
+            Completed
+          </Link>
         </li>
         <li className="filter-item">
-          <Link to="/Uncompleted">Uncompleted</Link>
+          <Link className="navbar-item" to="/Uncompleted">
+            Uncompleted
+          </Link>
         </li>
         <li className="filter-item">
-          <Link to="/Configuration">Configuration</Link>
+          <Link className="navbar-item" to="/Configuration">
+            Configuration
+          </Link>
         </li>
       </ul>
     </nav>

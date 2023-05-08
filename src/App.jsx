@@ -18,17 +18,17 @@ const App = () => {
             <main className="content">
               <Header />
               <Navbar />
+              <Routes>
+                <Route path="/add" element={<AddPage />} />
+                <Route path="/" element={<AllPage />} />
+                <Route path="/completed" element={<CompletedPage />} />
+                <Route path="/uncompleted" element={<UnCompletedPage />} />
+                <Route path="/configuration" element={<ConfigurationPage />} />
+              </Routes>
             </main>
           </div>
         </div>
       </>
-      <Routes>
-        <Route path="/add" element={<AddPage />} />
-        <Route path="/" element={<AllPage />} />
-        <Route path="/completed" element={<CompletedPage />} />
-        <Route path="/uncompleted" element={<UnCompletedPage />} />
-        <Route path="/configuration" element={<ConfigurationPage />} />
-      </Routes>
     </BrowserRouter>
   );
 };
