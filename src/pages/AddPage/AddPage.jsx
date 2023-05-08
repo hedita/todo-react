@@ -1,8 +1,7 @@
 import React from "react";
-import Add from "../../components/Add/Add";
 
 const AddPage = () => {
-  return <Add />;
+  return <h2>add</h2>;
 };
 
 export default AddPage;

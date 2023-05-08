@@ -1,8 +1,7 @@
 import React from "react";
-import Configuration from "../../components/Configuration/Configuration";
 
 const ConfigurationPage = () => {
-  return <Configuration />;
+  return <h2>configuration</h2>;
 };
 
 export default ConfigurationPage;

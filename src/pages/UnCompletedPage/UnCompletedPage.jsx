@@ -1,8 +1,7 @@
 import React from "react";
-import Main from "../../components/Main/Main";
 
 const UnCompletedPage = () => {
-  return <Main />;
+  return <h2>uncompleted</h2>;
 };
 
 export default UnCompletedPage;
