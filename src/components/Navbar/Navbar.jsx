@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar">
       <ul className="filter-list">
         <li className="filter-item">
-          <Link className="navbar-item" to="/Add">
+          <Link className="navbar-item" to="/add">
             Add
           </Link>
         </li>
@@ -17,17 +17,17 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="filter-item">
-          <Link className="navbar-item" to="/Completed">
+          <Link className="navbar-item" to="/completed">
             Completed
           </Link>
         </li>
         <li className="filter-item">
-          <Link className="navbar-item" to="/Uncompleted">
+          <Link className="navbar-item" to="/uncompleted">
             Uncompleted
           </Link>
         </li>
         <li className="filter-item">
-          <Link className="navbar-item" to="/Configuration">
+          <Link className="navbar-item" to="/configuration">
             Configuration
           </Link>
         </li>
