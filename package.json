@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,scss}\"",
     "sass": "node-sass -w src/scss/ -o src/dist/css --recursive "
   },
   "author": "Hedita",
