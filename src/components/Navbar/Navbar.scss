@@ -4,7 +4,7 @@ body {
   font-family: $font-family;
   background-color: $primary-color;
 }
-  
+
 ul {
   list-style-type: none;
 }
@@ -14,7 +14,7 @@ ul {
   padding: 0 $spacing-small;
   margin: 0 auto;
 }
-  
+
 .content {
   background-color: $sixth-color;
   display: grid;
@@ -23,19 +23,19 @@ ul {
 }
 
 .navbar {
-	padding-right: 95px;
+  padding-right: 95px;
 }
 
 .filter-list {
   display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin-right: $spacing-small;
 }
- 
+
 .filter-item {
   color: $primary-color;
-	margin-left: $spacing-xxlarge;
-	text-align: center;
+  margin-left: $spacing-xxlarge;
+  text-align: center;
 }
 
 .navbar-item {
