@@ -1,11 +1,10 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddPage from "./pages/AddPage/AddPage";
-import AllCompletedUncompleted from "./pages/AllCompletedUncompleted/AllCompletedUncompleted";
+import TodoList from "./pages/TodoList/TodoList";
 import ConfigurationPage from "./pages/ConfigurationPage/ConfigurationPage";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,7 +16,9 @@ const App = () => {
               <Navbar />
               <Routes>
                 <Route path="/add" element={<AddPage />} />
-                <Route path="/" element={<AllCompletedUncompleted />} />
+                <Route path="/" element={<TodoList />} />
+                <Route path="uncompleted" element={<TodoList />} />
+                <Route path="completed" element={<TodoList />} />
                 <Route path="/configuration" element={<ConfigurationPage />} />
               </Routes>
             </main>
