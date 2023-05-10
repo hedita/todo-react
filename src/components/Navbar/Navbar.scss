@@ -1,0 +1,44 @@
+@import "../Variables.scss";
+
+body {
+  font-family: $font-family;
+  background-color: $primary-color;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.site-wrapper {
+  max-width: 1200px;
+  padding: 0 $spacing-small;
+  margin: 0 auto;
+}
+
+.content {
+  background-color: $sixth-color;
+  display: grid;
+  place-items: center;
+  border-radius: $sizing-small;
+}
+
+.navbar {
+  padding-right: 95px;
+}
+
+.filter-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-right: $spacing-small;
+}
+
+.filter-item {
+  color: $primary-color;
+  margin-left: $spacing-xxlarge;
+  text-align: center;
+}
+
+.navbar-item {
+  text-decoration: none;
+  color: $primary-color;
+}
