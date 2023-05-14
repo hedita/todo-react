@@ -1,9 +1,10 @@
 import React from "react";
 import "./AddPage.scss";
 import { useState } from "react";
+import "../../../config";
 
 const AddPage = () => {
-  const url = "http://localhost:3030";
+  const apiBaseUrl = "http://localhost:3030";
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -14,14 +15,14 @@ const AddPage = () => {
 
   const postTodo = async () => {
      try {
-      await fetch(`${url}/todos`, {
+      await fetch(`${apiBaseUrl}/todos`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ text }),
     });
-    setIsSuccess("done");
+    setIsSuccess(true);
   } catch (error) {
     setError(error);
   }
