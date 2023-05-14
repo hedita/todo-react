@@ -9,10 +9,6 @@ const AddPage = () => {
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleAddTodo = async () => {
-    await postTodo();
-  };
-
   const postTodo = async () => {
     try {
       await fetch(`${apiBaseUrl}/todos`, {
@@ -38,7 +34,7 @@ const AddPage = () => {
           setText(e.target.value);
         }}
       />
-      <button className="add-button" onClick={handleAddTodo}>
+      <button className="add-button" onClick={postTodo}>
         Add
       </button>
     </div>
