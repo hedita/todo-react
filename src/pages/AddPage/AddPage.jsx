@@ -7,6 +7,7 @@ const AddPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [done, setDone] = useState(null);
+  
   const handleAddTodo = async () => {
     await postTodo();
   };
