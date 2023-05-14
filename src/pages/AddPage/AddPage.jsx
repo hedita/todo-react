@@ -1,8 +1,7 @@
 import React from "react";
 import "./AddPage.scss";
 import { useState } from "react";
-import { apiBaseUrl } from "../../../config";
-import { requestDefaultHeaders } from "../../../config";
+import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 
 const AddPage = () => {
   const [text, setText] = useState("");
