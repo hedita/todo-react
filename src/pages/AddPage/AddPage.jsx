@@ -6,8 +6,8 @@ const AddPage = () => {
   const url = "http://localhost:3030";
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
-  const [done, setDone] = useState(null);
-  
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const handleAddTodo = async () => {
     await postTodo();
   };
@@ -21,7 +21,7 @@ const AddPage = () => {
       },
       body: JSON.stringify({ text }),
     });
-    setDone("done");
+    setIsSuccess("done");
   } catch (error) {
     setError(error);
   }
@@ -29,7 +29,7 @@ const AddPage = () => {
   return (
     <div>
       {error && <p className="error-message">{error.message}</p>}
-      {done && <p className="success-message">Task successfully added.</p>}
+      {isSuccess && <p className="success-message">Task successfully added.</p>}
       <input
         className="add-input"
         placeholder="Write..."
