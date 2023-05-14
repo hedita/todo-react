@@ -27,8 +27,8 @@ const AddPage = () => {
   }
   return (
     <div>
-      {error ? <p className="error-message">{error.message}</p> : null}
-      {done ? <p className="success-message">Task successfully added.</p> : null}
+      {error && <p className="error-message">{error.message}</p>}
+      {done && <p className="success-message">Task successfully added.</p>}
       <input
         className="add-input"
         placeholder="Write..."
