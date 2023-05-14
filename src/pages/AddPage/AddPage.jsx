@@ -23,7 +23,7 @@ const AddPage = () => {
   };
   return (
     <div>
-      {error && <p className="error-message">{error.message}</p>}
+      {error && <p className="error-message">Something went wrong!</p>}
       {isSuccess && <p className="success-message">Task successfully added.</p>}
       <input
         className="add-input"
