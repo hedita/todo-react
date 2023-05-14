@@ -14,19 +14,19 @@ const AddPage = () => {
   };
 
   const postTodo = async () => {
-     try {
+    try {
       await fetch(`${apiBaseUrl}/todos`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ text }),
-    });
-    setIsSuccess(true);
-  } catch (error) {
-    setError(error);
-  }
-  }
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text }),
+      });
+      setIsSuccess(true);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
   return (
     <div>
       {error && <p className="error-message">{error.message}</p>}
