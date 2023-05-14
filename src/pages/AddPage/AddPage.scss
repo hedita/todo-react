@@ -2,21 +2,31 @@
 
 .add-button {
   margin-left: $spacing-small;
-	padding:10px;
-	background-color: $primary-color;
-	color: $sixth-color;
-	border:none;
-	border-radius:$sizing-xsmall;
-	box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+  padding: 10px;
+  background-color: $primary-color;
+  color: $sixth-color;
+  border: none;
+  border-radius: $sizing-xsmall;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 }
 
 .add-button:focus {
-	outline-color: transparent;
-	outline-style:solid;
-	box-shadow: 0 0 0 2px $secondary-color;
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 2px $secondary-color;
 }
 
 .add-input {
-	border-radius: 10px;
-	padding: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.success-message {
+  margin-left: $sizing-xsmall;
+  color: $seventh-color;
+}
+
+.error-message {
+  margin-left: $sizing-xsmall;
+  color: $tertiary-color;
 }
