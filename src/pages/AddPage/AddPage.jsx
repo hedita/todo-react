@@ -19,6 +19,7 @@ const AddPage = () => {
         body: JSON.stringify({ text }),
       });
       setIsSuccess(true);
+
     } catch (error) {
       setError(error.message);
     }
@@ -32,6 +33,8 @@ const AddPage = () => {
         placeholder="Write..."
         onChange={(e) => {
           setText(e.target.value);
+          setError("");
+          setIsSuccess("");
         }}
       />
       <button className="add-button" onClick={postTodo}>
