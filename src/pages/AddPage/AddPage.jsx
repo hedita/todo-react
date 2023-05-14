@@ -1,10 +1,10 @@
 import React from "react";
 import "./AddPage.scss";
 import { useState } from "react";
-import "../../../config";
+import { apiBaseUrl } from "../../../config";
+import { requestDefaultHeaders } from "../../../config";
 
 const AddPage = () => {
-  const apiBaseUrl = "http://localhost:3030";
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -13,13 +13,10 @@ const AddPage = () => {
     try {
       await fetch(`${apiBaseUrl}/todos`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: requestDefaultHeaders,
         body: JSON.stringify({ text }),
       });
       setIsSuccess(true);
-
     } catch (error) {
       setError(error.message);
     }
