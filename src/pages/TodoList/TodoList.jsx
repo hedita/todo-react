@@ -24,7 +24,7 @@ const TodoList = () => {
     <>
       {error && <p className="error-message">Something went wrong!</p>}
       <ul>
-        {tasks.map(({ text, id }) => {
+        {tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map(({ text, id }) => {
           return <TodoItem key={id} text={text} />;
         })}
       </ul>
