@@ -1,7 +1,12 @@
 import React from "react";
+import TodoItem from "../../components/TodoItem/TodoItem";
 
 const TodoList = () => {
-  return <h2>AllCompletedUncompleted</h2>;
+  return (
+    <ul>
+      <TodoItem />
+    </ul>
+  );
 };
 
 export default TodoList;
