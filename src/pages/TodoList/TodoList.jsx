@@ -27,7 +27,7 @@ const TodoList = () => {
         {tasks
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
           .map(({ text, id, createdAt }) => {
-            return <TodoItem  key={id} createdAt={createdAt} text={text} />;
+            return <TodoItem key={id} createdAt={createdAt} text={text} />;
           })}
       </ul>
     </>
