@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./AddPage.scss";
 import { useState } from "react";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
+import { StatusLengthContext } from "../../StatusLengthContext";
 
 const AddPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const { length, setLength } = useContext(StatusLengthContext);
 
   const postTodo = async () => {
     try {
@@ -16,6 +18,7 @@ const AddPage = () => {
         body: JSON.stringify({ text }),
       });
       setIsSuccess(true);
+      setLength(length + 1);
     } catch (error) {
       setError(error.message);
     }

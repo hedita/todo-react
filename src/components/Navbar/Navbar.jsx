@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
+import { StatusLengthContext } from "../../StatusLengthContext";
 
 const Navbar = () => {
+  const { length } = useContext(StatusLengthContext);
+
   return (
     <nav className="navbar">
       <ul className="filter-list">
@@ -13,7 +16,7 @@ const Navbar = () => {
         </li>
         <li className="filter-item">
           <Link className="navbar-item" to="/">
-            All
+            All{length}
           </Link>
         </li>
         <li className="filter-item">
