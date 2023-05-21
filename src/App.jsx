@@ -20,8 +20,14 @@ const App = () => {
               <Navbar />
               <Routes>
                 <Route path="/" element={<TodoList />} />
-                <Route path="uncompleted" element={<TodoList isDone={isDone}/>} />
-                <Route path="completed" element={<TodoList isDone={isDone}/>} />
+                <Route
+                  path="uncompleted"
+                  element={<TodoList isDone={isDone} />}
+                />
+                <Route
+                  path="completed"
+                  element={<TodoList isDone={isDone} />}
+                />
                 <Route path="/add" element={<AddPage />} />
                 <Route path="/configuration" element={<ConfigurationPage />} />
               </Routes>

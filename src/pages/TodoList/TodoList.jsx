@@ -4,7 +4,7 @@ import TodoItem from "../../components/TodoItem/TodoItem";
 import { apiBaseUrl } from "../../../config";
 import { StatusLengthContext } from "../../StatusLengthContext";
 
-const TodoList = ({isDone}) => {
+const TodoList = ({ isDone }) => {
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState(null);
   const { length, setLength } = useContext(StatusLengthContext);
