@@ -7,7 +7,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import { StatusLengthContext } from "./StatusLengthContext";
 import { useState } from "react";
-const App = () => {
+const App = ({ status }) => {
   const [length, setLength] = useState();
 
   return (
@@ -19,14 +19,14 @@ const App = () => {
               <Header />
               <Navbar />
               <Routes>
-                <Route path="/" element={<TodoList />} />
+                <Route path="/" element={<TodoList status={"all"} />} />
                 <Route
                   path="uncompleted"
-                  element={<TodoList isDone={isDone} />}
+                  element={<TodoList status={"uncompleted"} />}
                 />
                 <Route
                   path="completed"
-                  element={<TodoList isDone={isDone} />}
+                  element={<TodoList status={"completed"} />}
                 />
                 <Route path="/add" element={<AddPage />} />
                 <Route path="/configuration" element={<ConfigurationPage />} />
