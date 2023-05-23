@@ -7,8 +7,7 @@ import { StatusLengthContext } from "../../../StatusLengthContext";
 const TodoList = ({ status }) => {
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState(null);
-  const { setAllLength, setCompletedLength } =
-    useContext(StatusLengthContext);
+  const { todosCount, setTodosCount } = useContext(StatusLengthContext);
 
   const completedLength = tasks.filter((task) => task.isDone).length;
 
@@ -17,8 +16,7 @@ const TodoList = ({ status }) => {
   }, []);
 
   useEffect(() => {
-    setAllLength(tasks.length);
-    setCompletedLength(completedLength);
+    setTodosCount({ all: tasks.length, completed: completedLength });
   }, [tasks]);
 
   async function getTasks() {

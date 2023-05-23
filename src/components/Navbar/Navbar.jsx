@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { StatusLengthContext } from "../../../StatusLengthContext";
 
 const Navbar = () => {
-  const { allLength, completedLength } =
-    useContext(StatusLengthContext);
+  const { todosCount, setTodosCount } = useContext(StatusLengthContext);
 
   return (
     <nav className="navbar">
@@ -17,17 +16,17 @@ const Navbar = () => {
         </li>
         <li className="filter-item">
           <Link className="navbar-item" to="/">
-            All {allLength}
+            All {todosCount.all}
           </Link>
         </li>
         <li className="filter-item">
           <Link className="navbar-item" to="/completed">
-            Completed {completedLength}
+            Completed {todosCount.completed}
           </Link>
         </li>
         <li className="filter-item">
           <Link className="navbar-item" to="/uncompleted">
-            Uncompleted {allLength - completedLength}
+            Uncompleted {todosCount.all - todosCount.completed}
           </Link>
         </li>
         <li className="filter-item">

@@ -9,17 +9,14 @@ import Navbar from "./components/Navbar/Navbar";
 import { StatusLengthContext } from "../StatusLengthContext";
 
 const App = () => {
-  const [allLength, setAllLength] = useState([]);
-  const [completedLength, setCompletedLength] = useState([]);
+  const [todosCount, setTodosCount] = useState([]);
 
   return (
     <BrowserRouter>
       <StatusLengthContext.Provider
         value={{
-          allLength,
-          setAllLength,
-          completedLength,
-          setCompletedLength
+          todosCount,
+          setTodosCount,
         }}
       >
         <div className="site-wrapper">

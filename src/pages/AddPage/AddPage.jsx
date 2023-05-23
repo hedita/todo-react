@@ -8,8 +8,7 @@ const AddPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { allLength, setAllLength } =
-    useContext(StatusLengthContext);
+  const { todosCount, setTodosCount } = useContext(StatusLengthContext);
 
   const postTodo = async () => {
     try {
@@ -19,7 +18,10 @@ const AddPage = () => {
         body: JSON.stringify({ text }),
       });
       setIsSuccess(true);
-      setAllLength(allLength + 1);
+      setTodosCount({
+        all: todosCount.all + 1,
+        completed: todosCount.completed + 1,
+      });
     } catch (error) {
       setError(error.message);
     }
