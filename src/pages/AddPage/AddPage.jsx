@@ -6,7 +6,7 @@ import { StatusLengthContext } from "../../../StatusLengthContext";
 
 const AddPage = () => {
   const [text, setText] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const { todosCount, setTodosCount } = useContext(StatusLengthContext);
 
@@ -20,7 +20,7 @@ const AddPage = () => {
       setIsSuccess(true);
       setTodosCount({
         all: todosCount.all + 1,
-        completed: todosCount.completed + 1,
+        uncompleted: todosCount.completed + 1,
       });
     } catch (error) {
       setError(error.message);
