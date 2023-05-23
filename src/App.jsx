@@ -11,7 +11,6 @@ import { StatusLengthContext } from "../StatusLengthContext";
 const App = () => {
   const [allLength, setAllLength] = useState([]);
   const [completedLength, setCompletedLength] = useState([]);
-  const [uncompletedLength, setUncompletedLength] = useState([]);
 
   return (
     <BrowserRouter>
@@ -20,9 +19,7 @@ const App = () => {
           allLength,
           setAllLength,
           completedLength,
-          setCompletedLength,
-          uncompletedLength,
-          setUncompletedLength,
+          setCompletedLength
         }}
       >
         <div className="site-wrapper">
