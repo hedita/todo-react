@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { StatusLengthContext } from "../../../StatusLengthContext";
 
 const Navbar = () => {
-  const { todosCount, setTodosCount } = useContext(StatusLengthContext);
+  const { todosCount } = useContext(StatusLengthContext);
 
   return (
     <nav className="navbar">

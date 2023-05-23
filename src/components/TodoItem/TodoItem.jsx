@@ -3,7 +3,7 @@ import "./TodoItem.scss";
 import { useState, useContext } from "react";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { StatusLengthContext } from "../../../StatusLengthContext";
-import formatDate from "../../utils";
+import { formatDate } from "../../utils";
 
 const TodoItem = ({ text, createdAt, taskId, tasks, setTasks }) => {
   const [error, setError] = useState(null);
