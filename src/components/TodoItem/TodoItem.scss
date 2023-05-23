@@ -5,4 +5,13 @@
   border-radius: $spacing-small;
   padding: $spacing-small;
   margin: $spacing-small;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.delete-button {
+  border: $spacing-xxxsmall solid $quaternary-color;
+  border-radius: $spacing-small;
+  margin-left: $spacing-large;
 }

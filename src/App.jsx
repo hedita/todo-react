@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom/client";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddPage from "./pages/AddPage/AddPage";
 import TodoList from "./pages/TodoList/TodoList";
@@ -7,7 +8,6 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import { StatusLengthContext } from "../StatusLengthContext";
 
-import { useState } from "react";
 const App = () => {
   const [allLength, setAllLength] = useState([]);
   const [completedLength, setCompletedLength] = useState([]);
