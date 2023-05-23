@@ -8,7 +8,8 @@ const AddPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { allLength, setAllLength, uncompletedLength, setUncompletedLength } = useContext(StatusLengthContext);
+  const { allLength, setAllLength, uncompletedLength, setUncompletedLength } =
+    useContext(StatusLengthContext);
 
   const postTodo = async () => {
     try {

@@ -15,31 +15,37 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <StatusLengthContext.Provider value={{ allLength, setAllLength,completedLength, setCompletedLength,uncompletedLength, setUncompletedLength }}>
-            <div className="site-wrapper">
-              <div className="container">
-                <main className="content">
-                  <Header />
-                  <Navbar />
-                  <Routes>
-                    <Route path="/" element={<TodoList status={"all"} />} />
-                    <Route
-                      path="uncompleted"
-                      element={<TodoList status={"uncompleted"} />}
-                    />
-                    <Route
-                      path="completed"
-                      element={<TodoList status={"completed"} />}
-                    />
-                    <Route path="/add" element={<AddPage />} />
-                    <Route
-                      path="/configuration"
-                      element={<ConfigurationPage />}
-                    />
-                  </Routes>
-                </main>
-              </div>
-            </div>
+      <StatusLengthContext.Provider
+        value={{
+          allLength,
+          setAllLength,
+          completedLength,
+          setCompletedLength,
+          uncompletedLength,
+          setUncompletedLength,
+        }}
+      >
+        <div className="site-wrapper">
+          <div className="container">
+            <main className="content">
+              <Header />
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<TodoList status={"all"} />} />
+                <Route
+                  path="uncompleted"
+                  element={<TodoList status={"uncompleted"} />}
+                />
+                <Route
+                  path="completed"
+                  element={<TodoList status={"completed"} />}
+                />
+                <Route path="/add" element={<AddPage />} />
+                <Route path="/configuration" element={<ConfigurationPage />} />
+              </Routes>
+            </main>
+          </div>
+        </div>
       </StatusLengthContext.Provider>
     </BrowserRouter>
   );

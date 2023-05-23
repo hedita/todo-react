@@ -7,9 +7,8 @@ import { StatusLengthContext } from "../../../StatusLengthContext";
 const TodoList = ({ status }) => {
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState(null);
-  const { setAllLength } = useContext(StatusLengthContext);
-  const { setCompletedLength } = useContext(StatusLengthContext);
-  const { setUncompletedLength } = useContext(StatusLengthContext);
+  const { setAllLength, setCompletedLength, setUncompletedLength } =
+    useContext(StatusLengthContext);
 
   const completedLength = tasks.filter((task) => task.isDone).length;
   const uncompletedLength = tasks.filter((task) => !task.isDone).length;
