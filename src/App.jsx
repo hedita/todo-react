@@ -5,9 +5,7 @@ import TodoList from "./pages/TodoList/TodoList";
 import ConfigurationPage from "./pages/ConfigurationPage/ConfigurationPage";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import { AllStatusLengthContext } from "./Contexts/AllStatusLengthContext";
-import { CompletedStatusLengthContext } from "./Contexts/CompletedStatusLengthContext";
-import { UncompletedStatusLengthContext } from "./Contexts/UncompletedStatusLengthContext";
+import { StatusLengthContext } from "../StatusLengthContext";
 
 import { useState } from "react";
 const App = () => {
@@ -17,13 +15,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <AllStatusLengthContext.Provider value={{ allLength, setAllLength }}>
-        <CompletedStatusLengthContext.Provider
-          value={{ completedLength, setCompletedLength }}
-        >
-          <UncompletedStatusLengthContext.Provider
-            value={{ uncompletedLength, setUncompletedLength }}
-          >
+      <StatusLengthContext.Provider value={{ allLength, setAllLength,completedLength, setCompletedLength,uncompletedLength, setUncompletedLength }}>
             <div className="site-wrapper">
               <div className="container">
                 <main className="content">
@@ -48,9 +40,7 @@ const App = () => {
                 </main>
               </div>
             </div>
-          </UncompletedStatusLengthContext.Provider>
-        </CompletedStatusLengthContext.Provider>
-      </AllStatusLengthContext.Provider>
+      </StatusLengthContext.Provider>
     </BrowserRouter>
   );
 };

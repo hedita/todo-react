@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
-import { AllStatusLengthContext } from "../../Contexts/AllStatusLengthContext";
-import { CompletedStatusLengthContext } from "../../Contexts/CompletedStatusLengthContext";
-import { UncompletedStatusLengthContext } from "../../Contexts/UncompletedStatusLengthContext";
+import { StatusLengthContext } from "../../../StatusLengthContext";
 
 const Navbar = () => {
-  const { allLength } = useContext(AllStatusLengthContext);
-  const { completedLength } = useContext(CompletedStatusLengthContext);
-  const { uncompletedLength } = useContext(UncompletedStatusLengthContext);
+  const { allLength, completedLength,uncompletedLength  } = useContext(StatusLengthContext);
 
   return (
     <nav className="navbar">

@@ -2,16 +2,14 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import TodoItem from "../../components/TodoItem/TodoItem";
 import { apiBaseUrl } from "../../../config";
-import { AllStatusLengthContext } from "../../Contexts/AllStatusLengthContext";
-import { CompletedStatusLengthContext } from "../../Contexts/CompletedStatusLengthContext";
-import { UncompletedStatusLengthContext } from "../../Contexts/UncompletedStatusLengthContext";
+import { StatusLengthContext } from "../../../StatusLengthContext";
 
 const TodoList = ({ status }) => {
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState(null);
-  const { setAllLength } = useContext(AllStatusLengthContext);
-  const { setCompletedLength } = useContext(CompletedStatusLengthContext);
-  const { setUncompletedLength } = useContext(UncompletedStatusLengthContext);
+  const { setAllLength } = useContext(StatusLengthContext);
+  const { setCompletedLength } = useContext(StatusLengthContext);
+  const { setUncompletedLength } = useContext(StatusLengthContext);
 
   const completedLength = tasks.filter((task) => task.isDone).length;
   const uncompletedLength = tasks.filter((task) => !task.isDone).length;

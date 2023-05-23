@@ -2,17 +2,13 @@ import React, { useContext } from "react";
 import "./AddPage.scss";
 import { useState } from "react";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
-import { AllStatusLengthContext } from "../../Contexts/AllStatusLengthContext";
-import { UncompletedStatusLengthContext } from "../../Contexts/UncompletedStatusLengthContext";
+import { StatusLengthContext } from "../../../StatusLengthContext";
 
 const AddPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { allLength, setAllLength } = useContext(AllStatusLengthContext);
-  const { uncompletedLength, setUncompletedLength } = useContext(
-    UncompletedStatusLengthContext
-  );
+  const { allLength, setAllLength, uncompletedLength, setUncompletedLength } = useContext(StatusLengthContext);
 
   const postTodo = async () => {
     try {
