@@ -5,36 +5,52 @@ import TodoList from "./pages/TodoList/TodoList";
 import ConfigurationPage from "./pages/ConfigurationPage/ConfigurationPage";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import { StatusLengthContext } from "./StatusLengthContext";
+import { AllStatusLengthContext } from "./Contexts/AllStatusLengthContext";
+import { CompletedStatusLengthContext } from "./Contexts/CompletedStatusLengthContext";
+import { UncompletedStatusLengthContext } from "./Contexts/UncompletedStatusLengthContext";
+
 import { useState } from "react";
-const App = ({ status }) => {
-  const [length, setLength] = useState();
+const App = () => {
+  const [allLength, setAllLength] = useState([]);
+  const [completedLength, setCompletedLength] = useState([]);
+  const [uncompletedLength, setUncompletedLength] = useState([]);
 
   return (
     <BrowserRouter>
-      <StatusLengthContext.Provider value={{ length, setLength }}>
-        <div className="site-wrapper">
-          <div className="container">
-            <main className="content">
-              <Header />
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<TodoList status={"all"} />} />
-                <Route
-                  path="uncompleted"
-                  element={<TodoList status={"uncompleted"} />}
-                />
-                <Route
-                  path="completed"
-                  element={<TodoList status={"completed"} />}
-                />
-                <Route path="/add" element={<AddPage />} />
-                <Route path="/configuration" element={<ConfigurationPage />} />
-              </Routes>
-            </main>
-          </div>
-        </div>
-      </StatusLengthContext.Provider>
+      <AllStatusLengthContext.Provider value={{ allLength, setAllLength }}>
+        <CompletedStatusLengthContext.Provider
+          value={{ completedLength, setCompletedLength }}
+        >
+          <UncompletedStatusLengthContext.Provider
+            value={{ uncompletedLength, setUncompletedLength }}
+          >
+            <div className="site-wrapper">
+              <div className="container">
+                <main className="content">
+                  <Header />
+                  <Navbar />
+                  <Routes>
+                    <Route path="/" element={<TodoList status={"all"} />} />
+                    <Route
+                      path="uncompleted"
+                      element={<TodoList status={"uncompleted"} />}
+                    />
+                    <Route
+                      path="completed"
+                      element={<TodoList status={"completed"} />}
+                    />
+                    <Route path="/add" element={<AddPage />} />
+                    <Route
+                      path="/configuration"
+                      element={<ConfigurationPage />}
+                    />
+                  </Routes>
+                </main>
+              </div>
+            </div>
+          </UncompletedStatusLengthContext.Provider>
+        </CompletedStatusLengthContext.Provider>
+      </AllStatusLengthContext.Provider>
     </BrowserRouter>
   );
 };

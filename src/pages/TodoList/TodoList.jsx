@@ -2,19 +2,28 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import TodoItem from "../../components/TodoItem/TodoItem";
 import { apiBaseUrl } from "../../../config";
-import { StatusLengthContext } from "../../StatusLengthContext";
+import { AllStatusLengthContext } from "../../Contexts/AllStatusLengthContext";
+import { CompletedStatusLengthContext } from "../../Contexts/CompletedStatusLengthContext";
+import { UncompletedStatusLengthContext } from "../../Contexts/UncompletedStatusLengthContext";
 
 const TodoList = ({ status }) => {
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState(null);
-  const { setLength } = useContext(StatusLengthContext);
+  const { setAllLength } = useContext(AllStatusLengthContext);
+  const { setCompletedLength } = useContext(CompletedStatusLengthContext);
+  const { setUncompletedLength } = useContext(UncompletedStatusLengthContext);
+
+  const completedLength = tasks.filter((task) => task.isDone).length;
+  const uncompletedLength = tasks.filter((task) => !task.isDone).length;
 
   useEffect(() => {
     getTasks();
   }, []);
 
   useEffect(() => {
-    setLength(tasks.length);
+    setAllLength(tasks.length);
+    setCompletedLength(completedLength);
+    setUncompletedLength(uncompletedLength);
   }, [tasks]);
 
   async function getTasks() {

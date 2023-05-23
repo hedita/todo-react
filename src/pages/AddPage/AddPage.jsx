@@ -2,13 +2,17 @@ import React, { useContext } from "react";
 import "./AddPage.scss";
 import { useState } from "react";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
-import { StatusLengthContext } from "../../StatusLengthContext";
+import { AllStatusLengthContext } from "../../Contexts/AllStatusLengthContext";
+import { UncompletedStatusLengthContext } from "../../Contexts/UncompletedStatusLengthContext";
 
 const AddPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { length, setLength } = useContext(StatusLengthContext);
+  const { allLength, setAllLength } = useContext(AllStatusLengthContext);
+  const { uncompletedLength, setUncompletedLength } = useContext(
+    UncompletedStatusLengthContext
+  );
 
   const postTodo = async () => {
     try {
@@ -18,7 +22,8 @@ const AddPage = () => {
         body: JSON.stringify({ text }),
       });
       setIsSuccess(true);
-      setLength(length + 1);
+      setAllLength(allLength + 1);
+      setUncompletedLength(uncompletedLength + 1);
     } catch (error) {
       setError(error.message);
     }
