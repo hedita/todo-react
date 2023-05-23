@@ -39,12 +39,12 @@ const TodoList = ({ status }) => {
         {tasks
           .filter((task) => {
             if (status === "completed") {
-              return task.isDone === true;
-            } else if (status === "uncompleted") {
-              return task.isDone === false;
-            } else {
-              return tasks;
+              return task.isDone;
             }
+            if (status === "uncompleted") {
+              return !task.isDone;
+            }
+            return tasks;
           })
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
           .map(({ text, id, createdAt }) => {
