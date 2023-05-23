@@ -3,10 +3,12 @@ import "./TodoItem.scss";
 import { useState, useContext } from "react";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { StatusLengthContext } from "../../../StatusLengthContext";
+import formatDate from "../../utils";
 
 const TodoItem = ({ text, createdAt, taskId, tasks, setTasks }) => {
   const [error, setError] = useState(null);
   const { allLength, setAllLength } = useContext(StatusLengthContext);
+  <formatDate />;
 
   const deleteTodo = () => {
     try {
@@ -20,15 +22,6 @@ const TodoItem = ({ text, createdAt, taskId, tasks, setTasks }) => {
       setError(error.message);
     }
   };
-
-  function formatDate(date) {
-    const dateTime = new Date(date);
-    const year = dateTime.toLocaleDateString("en-US", { year: "numeric" });
-    const month = dateTime.toLocaleDateString("en-US", { month: "short" });
-    const day = dateTime.toLocaleDateString("en-US", { day: "numeric" });
-
-    return `${day} ${month} ${year}`;
-  }
 
   return (
     <>
