@@ -8,7 +8,7 @@ const AddPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const { todosCount, setTodosCount } = useContext(StatusLengthContext);
+  const { setTodosCount } = useContext(StatusLengthContext);
 
   const postTodo = async () => {
     try {
@@ -29,7 +29,6 @@ const AddPage = () => {
     } catch (error) {
       setError(error.message);
     }
-    0;
   };
   return (
     <div>
