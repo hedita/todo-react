@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./AddPage.scss";
 import { useState } from "react";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
+import { StatusLengthContext } from "../../../StatusLengthContext";
 
 const AddPage = () => {
   const [text, setText] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const { setTodosCount } = useContext(StatusLengthContext);
 
   const postTodo = async () => {
     try {
+      setError("");
+      setIsSuccess("");
       await fetch(`${apiBaseUrl}/todos`, {
         method: "POST",
         headers: requestDefaultHeaders,
         body: JSON.stringify({ text }),
       });
       setIsSuccess(true);
+      setText("");
+      setTodosCount((prevCount) => ({
+        ...prevCount,
+        all: prevCount.all + 1,
+      }));
     } catch (error) {
       setError(error.message);
     }
@@ -27,7 +36,8 @@ const AddPage = () => {
       <input
         className="add-input"
         placeholder="Write..."
-        onChange={(e) => {
+        value={text}
+        onInput={(e) => {
           setText(e.target.value);
           setError("");
           setIsSuccess("");
