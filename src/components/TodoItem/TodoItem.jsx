@@ -17,7 +17,7 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
         headers: requestDefaultHeaders,
       });
       getTasks();
-      setTodosCount(todosCount.all - 1);
+      setTodosCount({all: todosCount.all - 1});
     } catch (error) {
       setError(error.message);
     }
