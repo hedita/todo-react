@@ -19,7 +19,7 @@ const AddPage = () => {
       });
       setError("");
       setIsSuccess("");
-      setText("")
+      setText("");
       setIsSuccess(true);
       setTodosCount({
         all: todosCount.all + 1,

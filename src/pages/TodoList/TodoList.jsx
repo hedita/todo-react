@@ -48,9 +48,8 @@ const TodoList = ({ status }) => {
                 key={id}
                 createdAt={createdAt}
                 text={text}
-                tasks={tasks}
                 taskId={id}
-                setTasks={setTasks}
+                getTasks={getTasks}
               />
             );
           })}

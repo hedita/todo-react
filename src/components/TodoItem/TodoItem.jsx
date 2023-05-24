@@ -5,7 +5,7 @@ import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { StatusLengthContext } from "../../../StatusLengthContext";
 import { formatDate } from "../../utils";
 
-const TodoItem = ({ text, createdAt, taskId, tasks, setTasks }) => {
+const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
   const [error, setError] = useState(null);
   const { todosCount, setTodosCount } = useContext(StatusLengthContext);
 
@@ -16,7 +16,7 @@ const TodoItem = ({ text, createdAt, taskId, tasks, setTasks }) => {
         headers: requestDefaultHeaders,
       });
       setError("");
-      setTasks(tasks.filter((task) => task.id !== taskId));
+      getTasks();
       setTodosCount(todosCount.all - 1);
     } catch (error) {
       setError(error.message);

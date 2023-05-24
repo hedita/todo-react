@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { StatusLengthContext } from "../StatusLengthContext";
 
 const App = () => {
-  const [todosCount, setTodosCount] = useState({all:0, completed:0});
+  const [todosCount, setTodosCount] = useState({ all: 0, completed: 0 });
 
   return (
     <BrowserRouter>
