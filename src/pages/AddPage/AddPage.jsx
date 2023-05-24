@@ -19,10 +19,11 @@ const AddPage = () => {
       });
       setError("");
       setIsSuccess("");
+      setText("")
       setIsSuccess(true);
       setTodosCount({
         all: todosCount.all + 1,
-        uncompleted: todosCount.completed + 1,
+        uncompleted: todosCount.uncompleted + 1,
       });
     } catch (error) {
       setError(error.message);

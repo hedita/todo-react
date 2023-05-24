@@ -8,7 +8,6 @@ import { formatDate } from "../../utils";
 const TodoItem = ({ text, createdAt, taskId, tasks, setTasks }) => {
   const [error, setError] = useState(null);
   const { todosCount, setTodosCount } = useContext(StatusLengthContext);
-  <formatDate />;
 
   const deleteTodo = () => {
     try {
