@@ -15,8 +15,8 @@ const TodoList = ({ status }) => {
 
   useEffect(() => {
     if (Array.isArray(tasks)) {
-        const completedLength = tasks.filter((task) => task.isDone).length;
-        setTodosCount({ all: tasks.length, completed: completedLength });
+      const completedLength = tasks.filter((task) => task.isDone).length;
+      setTodosCount({ all: tasks.length, completed: completedLength });
     }
   }, [tasks]);
 

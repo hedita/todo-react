@@ -12,14 +12,14 @@ const AddPage = () => {
 
   const postTodo = async () => {
     try {
+      setError("");
+      setIsSuccess("");
       await fetch(`${apiBaseUrl}/todos`, {
         method: "POST",
         headers: requestDefaultHeaders,
         body: JSON.stringify({ text }),
       });
       setIsSuccess(true);
-      setError("");
-      setIsSuccess("");
       setText("");
       setTodosCount((prevCount) => ({
         ...prevCount,

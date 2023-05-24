@@ -11,11 +11,11 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
 
   const deleteTodo = () => {
     try {
+      setError("");
       fetch(`${apiBaseUrl}/todos/${taskId}`, {
         method: "DELETE",
         headers: requestDefaultHeaders,
       });
-      setError("");
       getTasks();
       setTodosCount(todosCount.all - 1);
     } catch (error) {
