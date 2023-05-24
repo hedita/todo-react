@@ -9,13 +9,12 @@ const TodoList = ({ status }) => {
   const [error, setError] = useState(null);
   const { setTodosCount } = useContext(StatusLengthContext);
 
-  const completedLength = tasks.filter((task) => task.isDone).length;
-
   useEffect(() => {
     getTasks();
   }, []);
 
   useEffect(() => {
+    const completedLength = tasks.filter((task) => task.isDone).length;
     setTodosCount({ all: tasks.length, completed: completedLength });
   }, [tasks]);
 
