@@ -2,12 +2,10 @@ import React from "react";
 import "./TodoItem.scss";
 import { useState, useContext } from "react";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
-import { StatusLengthContext } from "../../../StatusLengthContext";
 import { formatDate } from "../../utils";
 
 const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
   const [error, setError] = useState("");
-  const { todosCount, setTodosCount } = useContext(StatusLengthContext);
 
   const deleteTodo = () => {
     try {
@@ -17,7 +15,6 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
         headers: requestDefaultHeaders,
       });
       getTasks();
-      setTodosCount({all: todosCount.all - 1});
     } catch (error) {
       setError(error.message);
     }
