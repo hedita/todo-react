@@ -17,17 +17,19 @@ const AddPage = () => {
         headers: requestDefaultHeaders,
         body: JSON.stringify({ text }),
       });
+      setIsSuccess(true);
       setError("");
       setIsSuccess("");
-      setIsSuccess(true);
       setText("");
-      setTodosCount({
-        all: todosCount.all + 1,
-        uncompleted: todosCount.uncompleted + 1,
-      });
+      setTodosCount((prevCount) => ({
+        ...prevCount,
+        all: prevCount.all + 1,
+        uncompleted: prevCount.uncompleted + 1,
+      }));
     } catch (error) {
       setError(error.message);
     }
+    0;
   };
   return (
     <div>

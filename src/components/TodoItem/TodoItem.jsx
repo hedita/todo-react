@@ -6,7 +6,7 @@ import { StatusLengthContext } from "../../../StatusLengthContext";
 import { formatDate } from "../../utils";
 
 const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const { todosCount, setTodosCount } = useContext(StatusLengthContext);
 
   const deleteTodo = () => {
