@@ -19,8 +19,8 @@ const AddPage = () => {
       });
       setError("");
       setIsSuccess("");
-      setText("");
       setIsSuccess(true);
+      setText("");
       setTodosCount({
         all: todosCount.all + 1,
         uncompleted: todosCount.uncompleted + 1,
@@ -36,7 +36,8 @@ const AddPage = () => {
       <input
         className="add-input"
         placeholder="Write..."
-        onChange={(e) => {
+        value={text}
+        onInput={(e) => {
           setText(e.target.value);
           setError("");
           setIsSuccess("");
