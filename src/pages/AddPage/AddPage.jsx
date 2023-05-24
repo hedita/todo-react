@@ -17,6 +17,8 @@ const AddPage = () => {
         headers: requestDefaultHeaders,
         body: JSON.stringify({ text }),
       });
+      setError("");
+      setIsSuccess("");
       setIsSuccess(true);
       setTodosCount({
         all: todosCount.all + 1,

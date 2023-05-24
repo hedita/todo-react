@@ -7,7 +7,7 @@ import { formatDate } from "../../utils";
 
 const TodoItem = ({ text, createdAt, taskId, tasks, setTasks }) => {
   const [error, setError] = useState(null);
-  const { allLength, setAllLength } = useContext(StatusLengthContext);
+  const { todosCount, setTodosCount } = useContext(StatusLengthContext);
   <formatDate />;
 
   const deleteTodo = () => {
@@ -16,8 +16,9 @@ const TodoItem = ({ text, createdAt, taskId, tasks, setTasks }) => {
         method: "DELETE",
         headers: requestDefaultHeaders,
       });
+      setError("");
       setTasks(tasks.filter((task) => task.id !== taskId));
-      setAllLength(allLength - 1);
+      setTodosCount(todosCount.all - 1);
     } catch (error) {
       setError(error.message);
     }
