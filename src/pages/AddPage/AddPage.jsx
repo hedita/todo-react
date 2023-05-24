@@ -24,7 +24,6 @@ const AddPage = () => {
       setTodosCount((prevCount) => ({
         ...prevCount,
         all: prevCount.all + 1,
-        uncompleted: prevCount.uncompleted + 1,
       }));
     } catch (error) {
       setError(error.message);
