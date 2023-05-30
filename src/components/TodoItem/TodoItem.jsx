@@ -7,6 +7,8 @@ import { formatDate } from "../../utils";
 const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
   const [error, setError] = useState("");
   const [isDone, setIsDone] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newText, setNewText] = useState(text);
 
   const deleteTodo = () => {
     try {
@@ -35,6 +37,33 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
     }
   };
 
+  const saveNewTodo = () => {
+    if (newText === text) {
+      setIsEditing(false);
+      return;
+    }
+
+    try {
+      fetch(`${apiBaseUrl}/todos/${taskId}`, {
+        method: "PATCH",
+        body: JSON.stringify({ text: newText }),
+        headers: requestDefaultHeaders,
+      });
+      setIsEditing(false);
+      getTasks();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const editTodo = () => {
+    setIsEditing(true);
+  };
+
+  const handleInputChange = (event) => {
+    setNewText(event.target.value);
+  };
+
   return (
     <>
       {error && <p className="error-message">Something went wrong!</p>}
@@ -44,7 +73,17 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
           type="checkbox"
           onClick={updateStatus}
         />
-        {text}
+
+        {isEditing ? (
+          <input
+            type="text"
+            value={newText}
+            onChange={handleInputChange}
+            onBlur={saveNewTodo}
+          />
+        ) : (
+          <p onClick={editTodo}>{text}</p>
+        )}
         <button className="delete-button" onClick={deleteTodo}>
           Delete
         </button>
