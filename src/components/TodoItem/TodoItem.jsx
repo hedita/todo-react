@@ -39,7 +39,11 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
     <>
       {error && <p className="error-message">Something went wrong!</p>}
       <li title={formatDate(createdAt)} className="todo-item">
-        <input className="isDone-checkbox" type="checkbox" onClick={updateStatus} />
+        <input
+          className="isDone-checkbox"
+          type="checkbox"
+          onClick={updateStatus}
+        />
         {text}
         <button className="delete-button" onClick={deleteTodo}>
           Delete
