@@ -9,10 +9,10 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
 
-  const deleteTodo = () => {
+  const deleteTodo = async() => {
     try {
       setError("");
-      fetch(`${apiBaseUrl}/todos/${taskId}`, {
+      await fetch(`${apiBaseUrl}/todos/${taskId}`, {
         method: "DELETE",
         headers: requestDefaultHeaders,
       });
@@ -22,9 +22,9 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
     }
   };
 
-  const updateStatus = () => {
+  const updateStatus = async() => {
     try {
-      fetch(`${apiBaseUrl}/todos/${taskId}`, {
+      await fetch(`${apiBaseUrl}/todos/${taskId}`, {
         method: "PATCH",
         body: JSON.stringify({ isDone }),
         headers: requestDefaultHeaders,
@@ -36,14 +36,14 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
     }
   };
 
-  const saveNewTodo = () => {
+  const saveNewTodo = async() => {
     if (newText === text) {
       setIsEditing(false);
       return;
     }
 
     try {
-      fetch(`${apiBaseUrl}/todos/${taskId}`, {
+      await fetch(`${apiBaseUrl}/todos/${taskId}`, {
         method: "PATCH",
         body: JSON.stringify({ text: newText }),
         headers: requestDefaultHeaders,
