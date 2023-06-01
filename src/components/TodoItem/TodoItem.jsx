@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./TodoItem.scss";
-import { useState } from "react";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { formatDate } from "../../utils";
 
