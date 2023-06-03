@@ -3,7 +3,7 @@ import "./TodoItem.scss";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { formatDate } from "../../utils";
 
-const TodoItem = ({ text, createdAt, taskId, getTasks,isDone }) => {
+const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
   const [error, setError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
