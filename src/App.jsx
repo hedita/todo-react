@@ -20,23 +20,23 @@ const App = () => {
         }}
       >
         <div className="site-wrapper">
-            <main className="content">
-              <Header />
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<TodoList status={"all"} />} />
-                <Route
-                  path="uncompleted"
-                  element={<TodoList status={"uncompleted"} />}
-                />
-                <Route
-                  path="completed"
-                  element={<TodoList status={"completed"} />}
-                />
-                <Route path="/add" element={<AddPage />} />
-                <Route path="/configuration" element={<ConfigurationPage />} />
-              </Routes>
-            </main>
+          <main className="content">
+            <Header />
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<TodoList status={"all"} />} />
+              <Route
+                path="uncompleted"
+                element={<TodoList status={"uncompleted"} />}
+              />
+              <Route
+                path="completed"
+                element={<TodoList status={"completed"} />}
+              />
+              <Route path="/add" element={<AddPage />} />
+              <Route path="/configuration" element={<ConfigurationPage />} />
+            </Routes>
+          </main>
         </div>
       </StatusLengthContext.Provider>
     </BrowserRouter>

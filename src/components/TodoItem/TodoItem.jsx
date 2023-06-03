@@ -3,13 +3,12 @@ import "./TodoItem.scss";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { formatDate } from "../../utils";
 
-const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
+const TodoItem = ({ text, createdAt, taskId, getTasks,isDone }) => {
   const [error, setError] = useState("");
-  const [isDone, setIsDone] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
 
-  const deleteTodo = async() => {
+  const deleteTodo = async () => {
     try {
       setError("");
       await fetch(`${apiBaseUrl}/todos/${taskId}`, {
@@ -22,21 +21,20 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
     }
   };
 
-  const updateStatus = async() => {
+  const updateStatus = async (event) => {
     try {
       await fetch(`${apiBaseUrl}/todos/${taskId}`, {
         method: "PATCH",
-        body: JSON.stringify({ isDone }),
+        body: JSON.stringify({ isDone: event.target.checked }),
         headers: requestDefaultHeaders,
       });
-      setIsDone(!isDone);
       getTasks();
     } catch (error) {
       setError(error.message);
     }
   };
 
-  const saveNewTodo = async() => {
+  const saveNewTodo = async () => {
     if (newText === text) {
       setIsEditing(false);
       return;
@@ -70,7 +68,8 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
         <input
           className="isDone-checkbox"
           type="checkbox"
-          onClick={updateStatus}
+          onChange={updateStatus}
+          checked={isDone}
         />
 
         {isEditing ? (
@@ -82,7 +81,9 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
             onBlur={saveNewTodo}
           />
         ) : (
-          <p className="todo-text" onClick={editTodo}>{text}</p>
+          <p className="todo-text" onClick={editTodo}>
+            {text}
+          </p>
         )}
         <button className="delete-button" onClick={deleteTodo}>
           Delete

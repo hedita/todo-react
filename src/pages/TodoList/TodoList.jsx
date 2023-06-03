@@ -45,7 +45,7 @@ const TodoList = ({ status }) => {
             return tasks;
           })
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-          .map(({ text, id, createdAt }) => {
+          .map(({ text, id, createdAt,isDone }) => {
             return (
               <TodoItem
                 key={id}
@@ -53,6 +53,7 @@ const TodoList = ({ status }) => {
                 text={text}
                 taskId={id}
                 getTasks={getTasks}
+                isDone={isDone}
               />
             );
           })}
