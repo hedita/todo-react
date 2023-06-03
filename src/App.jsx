@@ -20,7 +20,6 @@ const App = () => {
         }}
       >
         <div className="site-wrapper">
-          <div className="container">
             <main className="content">
               <Header />
               <Navbar />
@@ -38,7 +37,6 @@ const App = () => {
                 <Route path="/configuration" element={<ConfigurationPage />} />
               </Routes>
             </main>
-          </div>
         </div>
       </StatusLengthContext.Provider>
     </BrowserRouter>

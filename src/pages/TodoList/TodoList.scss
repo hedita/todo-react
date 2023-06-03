@@ -1,0 +1,6 @@
+@import "../../components/Variables.scss";
+
+.todos-list {
+  display: grid;
+  gap: $spacing-xsmall;
+}

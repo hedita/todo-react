@@ -75,13 +75,14 @@ const TodoItem = ({ text, createdAt, taskId, getTasks }) => {
 
         {isEditing ? (
           <input
+            className="editing-input"
             type="text"
             value={newText}
             onChange={handleInputChange}
             onBlur={saveNewTodo}
           />
         ) : (
-          <p onClick={editTodo}>{text}</p>
+          <p className="todo-text" onClick={editTodo}>{text}</p>
         )}
         <button className="delete-button" onClick={deleteTodo}>
           Delete

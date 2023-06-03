@@ -2,16 +2,29 @@
 
 .todo-item {
   border: $spacing-xxxsmall solid $primary-color;
-  border-radius: $spacing-small;
+  border-radius: $spacing-xsmall;
   padding: $spacing-small;
-  margin: $spacing-small;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  background-color: $fifth-color;
 }
 
 .delete-button {
   border: $spacing-xxxsmall solid $quaternary-color;
-  border-radius: $spacing-small;
-  margin-left: $spacing-large;
+  border-radius: $spacing-xsmall;
+  margin-left: auto;
+}
+
+.todo-text {
+  padding-left: $spacing-xsmall;
+}
+
+.editing-input {
+  margin-left: $spacing-xsmall;
+  padding: $spacing-xsmall;
+  border: none;
+  border-bottom: 1px solid gray;
+  border-radius: 8px;
 }

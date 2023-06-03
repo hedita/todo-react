@@ -10,6 +10,10 @@
   box-shadow: 0px 0px $spacing-xxxsmall $spacing-xxxsmall rgb(0, 0, 0);
 }
 
+.add-container {
+  display: flex;
+}
+
 .add-button:focus {
   outline-color: transparent;
   outline-style: solid;
@@ -19,7 +23,8 @@
 .add-input {
   border-radius: $spacing-xsmall;
   padding: $spacing-xsmall;
-  margin: $spacing-small $spacing-small;
+  width: 100%;
+  border: 1px solid $primary-color;
 }
 
 .success-message {
