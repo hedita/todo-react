@@ -1,8 +1,14 @@
 @import "../Variables.scss";
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: $font-family;
   background-color: $primary-color;
+  margin: 0;
+  padding: 0;
 }
 
 ul {
@@ -17,24 +23,23 @@ ul {
 
 .content {
   background-color: $sixth-color;
-  display: grid;
-  place-items: center;
-  border-radius: $sizing-small;
+  border-radius: $spacing-xsmall;
+  min-height: 95vh;
+  margin-top: $spacing-small;
+  padding: $spacing-small;
 }
 
 .navbar {
-  padding-right: 95px;
+  padding-bottom: $spacing-small;
 }
 
 .filter-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  margin-right: $spacing-small;
 }
 
 .filter-item {
   color: $primary-color;
-  margin-left: $spacing-xxlarge;
   text-align: center;
 }
 

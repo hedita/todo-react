@@ -1,8 +1,9 @@
 @import "../Variables.scss";
 
 .title {
-  margin-top: $spacing-large;
   font-size: $bolder-font;
   font-weight: bolder;
   color: $primary-color;
+  text-align: center;
+  padding-bottom: $spacing-xxlarge;
 }

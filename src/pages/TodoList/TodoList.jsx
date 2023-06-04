@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import TodoItem from "../../components/TodoItem/TodoItem";
 import { apiBaseUrl } from "../../../config";
 import { StatusLengthContext } from "../../../StatusLengthContext";
+import "./TodoList.scss";
 
 const TodoList = ({ status }) => {
   const [tasks, setTasks] = useState([]);
@@ -32,7 +33,7 @@ const TodoList = ({ status }) => {
   return (
     <>
       {error && <p className="error-message">Something went wrong!</p>}
-      <ul>
+      <ul className="todos-list">
         {tasks
           .filter((task) => {
             if (status === "completed") {
@@ -44,7 +45,7 @@ const TodoList = ({ status }) => {
             return tasks;
           })
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-          .map(({ text, id, createdAt }) => {
+          .map(({ text, id, createdAt, isDone }) => {
             return (
               <TodoItem
                 key={id}
@@ -52,6 +53,7 @@ const TodoList = ({ status }) => {
                 text={text}
                 taskId={id}
                 getTasks={getTasks}
+                isDone={isDone}
               />
             );
           })}
