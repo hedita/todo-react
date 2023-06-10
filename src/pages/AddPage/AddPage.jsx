@@ -45,7 +45,10 @@ const AddPage = () => {
           setIsSuccess("");
         }}
       />
-      <button className="add-button" onClick={postTodo}>
+      <button
+        className={`add-button ${darkMode ? "dark-mode" : ""}`}
+        onClick={postTodo}
+      >
         Add
       </button>
     </div>
