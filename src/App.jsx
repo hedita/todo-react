@@ -27,7 +27,7 @@ const App = () => {
         >
           <div className="site-wrapper">
             <main
-              className={darkMode ? "content dark-mode" : "content light-mode"}
+              className={darkMode ? "content dark-mode-bg" : "content light-mode-bg"}
             >
               <Header />
               <Navbar />

@@ -22,15 +22,19 @@ ul {
 }
 
 .content {
-  background-color: $sixth-color;
+  // background-color: $sixth-color;
   border-radius: $spacing-xsmall;
   min-height: 95vh;
   margin-top: $spacing-small;
   padding: $spacing-small;
 }
 
-.content.dark-mode {
+.dark-mode-bg {
   background-color: black;
+}
+
+.light-mode-bg {
+  background-color: $sixth-color;
 }
 
 .navbar {
