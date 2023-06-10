@@ -12,9 +12,7 @@ const Navbar = () => {
       <ul className="filter-list">
         <li className="filter-item">
           <Link
-            className={
-              darkMode ? "navbar-item dark-mode" : "navbar-item light-mode"
-            }
+            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
             to="/add"
           >
             Add
@@ -22,9 +20,7 @@ const Navbar = () => {
         </li>
         <li className="filter-item">
           <Link
-            className={
-              darkMode ? "navbar-item dark-mode" : "navbar-item light-mode"
-            }
+            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
             to="/"
           >
             All {todosCount.all}
@@ -32,9 +28,7 @@ const Navbar = () => {
         </li>
         <li className="filter-item">
           <Link
-            className={
-              darkMode ? "navbar-item dark-mode" : "navbar-item light-mode"
-            }
+            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
             to="/completed"
           >
             Completed {todosCount.completed}
@@ -42,9 +36,7 @@ const Navbar = () => {
         </li>
         <li className="filter-item">
           <Link
-            className={
-              darkMode ? "navbar-item dark-mode" : "navbar-item light-mode"
-            }
+            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
             to="/uncompleted"
           >
             Uncompleted {todosCount.all - todosCount.completed}
@@ -52,9 +44,7 @@ const Navbar = () => {
         </li>
         <li className="filter-item">
           <Link
-            className={
-              darkMode ? "navbar-item dark-mode" : "navbar-item light-mode"
-            }
+            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
             to="/configuration"
           >
             Configuration

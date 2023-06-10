@@ -6,7 +6,7 @@ const Header = () => {
   const { darkMode } = useContext(DarkModeContext);
 
   return (
-    <h1 className={darkMode ? "title dark-mode" : "title light-mode"}>Todo</h1>
+    <h1 className={`title ${darkMode ? "dark-mode" : "light-mode"}`}>Todo</h1>
   );
 };
 

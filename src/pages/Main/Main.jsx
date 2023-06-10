@@ -12,9 +12,7 @@ const Main = () => {
   const { darkMode } = useContext(DarkModeContext);
 
   return (
-    <main
-      className={darkMode ? "content dark-mode-bg" : "content light-mode-bg"}
-    >
+    <main className={`content ${darkMode ? "dark-mode" : "light-mode"}`}>
       <Header />
       <Navbar />
       <Routes>
