@@ -22,6 +22,7 @@ ul {
 }
 
 .content {
+  background-color: $sixth-color;
   border-radius: $spacing-xsmall;
   min-height: 95vh;
   margin-top: $spacing-small;
@@ -30,10 +31,6 @@ ul {
 
 .dark-mode-bg {
   background-color: $eighth-color;
-}
-
-.light-mode-bg {
-  background-color: $sixth-color;
 }
 
 .navbar {
