@@ -68,7 +68,7 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
       {error && <p className="error-message">Something went wrong!</p>}
       <li
         title={formatDate(createdAt)}
-        className={darkMode ? "todo-item dark-mode" : "todo-item light-mode"}
+        className={`todo-item {darkMode ? "dark-mode" : "light-mode"}`}
       >
         <input
           className="isDone-checkbox"
