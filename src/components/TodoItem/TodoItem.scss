@@ -15,11 +15,11 @@
   border: $spacing-xxxsmall solid $quaternary-color;
   border-radius: $spacing-xsmall;
   margin-left: auto;
-}
 
-.delete-button.dark-mode {
-  color: $sixth-color;
-  background-color: $eighth-color;
+  &.delete-button.dark-mode {
+    color: $sixth-color;
+    background-color: $eighth-color;
+  }
 }
 
 .todo-text {

@@ -27,10 +27,10 @@ ul {
   min-height: 95vh;
   margin-top: $spacing-small;
   padding: $spacing-small;
-}
 
-.dark-mode-bg {
-  background-color: $eighth-color;
+  &.dark-mode-bg {
+    background-color: $eighth-color;
+  }
 }
 
 .navbar {
@@ -50,8 +50,8 @@ ul {
 .navbar-item {
   text-decoration: none;
   color: $primary-color;
-}
 
-.navbar-item.dark-mode {
-  color: $sixth-color;
+  &.navbar-item.dark-mode {
+    color: $sixth-color;
+  }
 }

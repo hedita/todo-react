@@ -6,8 +6,8 @@
   color: $primary-color;
   text-align: center;
   padding-bottom: $spacing-xxlarge;
-}
-
-.title.dark-mode {
-  color: $sixth-color;
+  
+  &.title.dark-mode {
+    color: $sixth-color;
+  }
 }
