@@ -9,6 +9,11 @@
   justify-content: space-between;
   align-items: center;
   background-color: $fifth-color;
+
+  &.dark-mode {
+    background-color: $eighth-color;
+    color: $sixth-color;
+  }
 }
 
 .delete-button {

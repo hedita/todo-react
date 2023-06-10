@@ -25,6 +25,10 @@
   padding: $spacing-xsmall;
   width: 100%;
   border: 1px solid $primary-color;
+
+  &.dark-mode {
+    background-color: $eighth-color;
+  }
 }
 
 .success-message {
