@@ -6,47 +6,35 @@ import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
 const Navbar = () => {
   const { todosCount } = useContext(StatusLengthContext);
   const { darkMode } = useContext(DarkModeContext);
+  const navbarItemClass = darkMode
+    ? "navbar-item dark-mode"
+    : "navbar-item light-mode";
 
   return (
     <nav className="navbar">
       <ul className="filter-list">
         <li className="filter-item">
-          <Link
-            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
-            to="/add"
-          >
+          <Link className={navbarItemClass} to="/add">
             Add
           </Link>
         </li>
         <li className="filter-item">
-          <Link
-            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
-            to="/"
-          >
+          <Link className={navbarItemClass} to="/">
             All {todosCount.all}
           </Link>
         </li>
         <li className="filter-item">
-          <Link
-            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
-            to="/completed"
-          >
+          <Link className={navbarItemClass} to="/completed">
             Completed {todosCount.completed}
           </Link>
         </li>
         <li className="filter-item">
-          <Link
-            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
-            to="/uncompleted"
-          >
+          <Link className={navbarItemClass} to="/uncompleted">
             Uncompleted {todosCount.all - todosCount.completed}
           </Link>
         </li>
         <li className="filter-item">
-          <Link
-            className={`navbar-item ${darkMode ? "dark-mode" : "light-mode"}`}
-            to="/configuration"
-          >
+          <Link className={navbarItemClass} to="/configuration">
             Configuration
           </Link>
         </li>
