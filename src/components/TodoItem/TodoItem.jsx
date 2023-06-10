@@ -68,7 +68,7 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
       {error && <p className="error-message">Something went wrong!</p>}
       <li
         title={formatDate(createdAt)}
-        className={`todo-item ${darkMode ? "dark-mode" : "light-mode"}`}
+        className={`todo-item ${darkMode ? "dark-mode" : ""}`}
       >
         <input
           className="isDone-checkbox"
@@ -91,7 +91,7 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
           </p>
         )}
         <button
-          className={`delete-button ${darkMode ? "dark-mode" : "light-mode"}`}
+          className={`delete-button ${darkMode ? "dark-mode" : ""}`}
           onClick={deleteTodo}
         >
           Delete
