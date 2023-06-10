@@ -7,7 +7,6 @@ const ConfigurationPage = () => {
   return (
     <button className="lightSwitch" onClick={toggleTheme}>
       {darkMode ? "light Mode" : "Dark Mode"}
-      {console.log(darkMode)}
     </button>
   );
 };
