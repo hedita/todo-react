@@ -6,4 +6,8 @@
   color: $primary-color;
   text-align: center;
   padding-bottom: $spacing-xxlarge;
+
+  &.dark-mode {
+    color: $sixth-color;
+  }
 }

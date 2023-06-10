@@ -27,6 +27,10 @@ ul {
   min-height: 95vh;
   margin-top: $spacing-small;
   padding: $spacing-small;
+
+  &.dark-mode {
+    background-color: $eighth-color;
+  }
 }
 
 .navbar {
@@ -46,4 +50,8 @@ ul {
 .navbar-item {
   text-decoration: none;
   color: $primary-color;
+
+  &.dark-mode {
+    color: $sixth-color;
+  }
 }

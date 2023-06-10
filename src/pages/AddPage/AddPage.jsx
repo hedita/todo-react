@@ -3,12 +3,14 @@ import "./AddPage.scss";
 import { useState } from "react";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { StatusLengthContext } from "../../../StatusLengthContext";
+import { DarkModeContext } from "../ConfigurationPage/DarkModeContext";
 
 const AddPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const { setTodosCount } = useContext(StatusLengthContext);
+  const { darkMode } = useContext(DarkModeContext);
 
   const postTodo = async () => {
     try {
@@ -34,7 +36,7 @@ const AddPage = () => {
       {error && <p className="error-message">Something went wrong!</p>}
       {isSuccess && <p className="success-message">Task successfully added.</p>}
       <input
-        className="add-input"
+        className={`add-input ${darkMode ? "dark-mode" : ""}`}
         placeholder="Write..."
         value={text}
         onInput={(e) => {
@@ -43,7 +45,10 @@ const AddPage = () => {
           setIsSuccess("");
         }}
       />
-      <button className="add-button" onClick={postTodo}>
+      <button
+        className={`add-button ${darkMode ? "dark-mode" : ""}`}
+        onClick={postTodo}
+      >
         Add
       </button>
     </div>

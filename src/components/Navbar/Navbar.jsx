@@ -2,35 +2,37 @@ import React, { useContext } from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { StatusLengthContext } from "../../../StatusLengthContext";
-
+import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
 const Navbar = () => {
   const { todosCount } = useContext(StatusLengthContext);
+  const { darkMode } = useContext(DarkModeContext);
+  const navbarItemClass = `navbar-item ${darkMode ? "dark-mode" : ""}`;
 
   return (
     <nav className="navbar">
       <ul className="filter-list">
         <li className="filter-item">
-          <Link className="navbar-item" to="/add">
+          <Link className={navbarItemClass} to="/add">
             Add
           </Link>
         </li>
         <li className="filter-item">
-          <Link className="navbar-item" to="/">
+          <Link className={navbarItemClass} to="/">
             All {todosCount.all}
           </Link>
         </li>
         <li className="filter-item">
-          <Link className="navbar-item" to="/completed">
+          <Link className={navbarItemClass} to="/completed">
             Completed {todosCount.completed}
           </Link>
         </li>
         <li className="filter-item">
-          <Link className="navbar-item" to="/uncompleted">
+          <Link className={navbarItemClass} to="/uncompleted">
             Uncompleted {todosCount.all - todosCount.completed}
           </Link>
         </li>
         <li className="filter-item">
-          <Link className="navbar-item" to="/configuration">
+          <Link className={navbarItemClass} to="/configuration">
             Configuration
           </Link>
         </li>

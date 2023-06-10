@@ -9,12 +9,22 @@
   justify-content: space-between;
   align-items: center;
   background-color: $fifth-color;
+
+  &.dark-mode {
+    background-color: $eighth-color;
+    color: $sixth-color;
+  }
 }
 
 .delete-button {
   border: $spacing-xxxsmall solid $quaternary-color;
   border-radius: $spacing-xsmall;
   margin-left: auto;
+
+  &.dark-mode {
+    color: $sixth-color;
+    background-color: $eighth-color;
+  }
 }
 
 .todo-text {

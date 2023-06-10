@@ -1,0 +1,11 @@
+@import "../../components/Variables.scss";
+
+.light-switch {
+  border-radius: $sizing-xsmall;
+  padding: $spacing-xsmall;
+
+  &.dark-mode {
+    background-color: $sixth-color;
+    color: $eighth-color;
+  }
+}
