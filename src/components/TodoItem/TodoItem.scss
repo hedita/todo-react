@@ -11,10 +11,20 @@
   background-color: $fifth-color;
 }
 
+.todo-item.dark-mode {
+  background-color: black;
+  color: white;
+}
+
 .delete-button {
   border: $spacing-xxxsmall solid $quaternary-color;
   border-radius: $spacing-xsmall;
   margin-left: auto;
+}
+
+.delete-button.dark-mode {
+  color: white;
+  background-color: black;
 }
 
 .todo-text {

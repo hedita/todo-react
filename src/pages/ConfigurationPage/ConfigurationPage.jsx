@@ -1,7 +1,14 @@
-import React from "react";
+import { useContext } from "react";
+import { DarkModeContext } from "./DarkModeContext";
 
 const ConfigurationPage = () => {
-  return <h2>configuration</h2>;
+  const { darkMode, toggleTheme } = useContext(DarkModeContext);
+
+  return (
+    <button className="lightSwitch" onClick={toggleTheme}>
+      {darkMode ? "light Mode" : "Dark Mode"}
+    </button>
+  );
 };
 
 export default ConfigurationPage;

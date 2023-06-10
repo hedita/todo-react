@@ -29,6 +29,10 @@ ul {
   padding: $spacing-small;
 }
 
+.content.dark-mode {
+  background-color: black;
+}
+
 .navbar {
   padding-bottom: $spacing-small;
 }
@@ -46,4 +50,8 @@ ul {
 .navbar-item {
   text-decoration: none;
   color: $primary-color;
+}
+
+.navbar-item.dark-mode {
+  color: white;
 }

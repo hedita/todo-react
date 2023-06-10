@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./TodoItem.scss";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { formatDate } from "../../utils";
+import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
 
 const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
   const [error, setError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
+  const { darkMode } = useContext(DarkModeContext);
 
   const deleteTodo = async () => {
     try {
@@ -64,7 +66,10 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
   return (
     <>
       {error && <p className="error-message">Something went wrong!</p>}
-      <li title={formatDate(createdAt)} className="todo-item">
+      <li
+        title={formatDate(createdAt)}
+        className={darkMode ? "todo-item dark-mode" : "todo-item light-mode"}
+      >
         <input
           className="isDone-checkbox"
           type="checkbox"
@@ -85,7 +90,12 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
             {text}
           </p>
         )}
-        <button className="delete-button" onClick={deleteTodo}>
+        <button
+          className={
+            darkMode ? "delete-button dark-mode" : "delete-button light-mode"
+          }
+          onClick={deleteTodo}
+        >
           Delete
         </button>
       </li>
