@@ -6,7 +6,7 @@ import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
 const Navbar = () => {
   const { todosCount } = useContext(StatusLengthContext);
   const { darkMode } = useContext(DarkModeContext);
-  const navbarItemClass = darkMode ? "navbar-item dark-mode" : "navbar-item";
+  const navbarItemClass = `navbar-item ${darkMode ? "dark-mode" : ""}` ;
 
   return (
     <nav className="navbar">
