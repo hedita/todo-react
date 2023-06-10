@@ -65,7 +65,7 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
 
   return (
     <>
-      {error && <p className="error-message">Something went wrong!</p>}
+      {error && <li className="error-message">Something went wrong!</li>}
       <li
         title={formatDate(createdAt)}
         className={`todo-item ${darkMode ? "dark-mode" : ""}`}
