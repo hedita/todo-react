@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { StatusLengthContext } from "../StatusLengthContext";
 import { DarkModeProvider } from "./pages/ConfigurationPage/DarkModeContext";
 import Main from "./pages/Main/Main";
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
 
 const App = () => {
   const [todosCount, setTodosCount] = useState({ all: 0, completed: 0 });
@@ -17,9 +19,11 @@ const App = () => {
             setTodosCount,
           }}
         >
-          <div className="site-wrapper">
-            <Main />
-          </div>
+          <QueryClientProvider client={queryClient}>
+            <div className="site-wrapper">
+              <Main />
+            </div>
+          </QueryClientProvider>
         </StatusLengthContext.Provider>
       </DarkModeProvider>
     </BrowserRouter>

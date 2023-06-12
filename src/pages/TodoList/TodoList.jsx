@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
 import TodoItem from "../../components/TodoItem/TodoItem";
 import { apiBaseUrl } from "../../../config";
 import { StatusLengthContext } from "../../../StatusLengthContext";
@@ -7,12 +8,12 @@ import "./TodoList.scss";
 
 const TodoList = ({ status }) => {
   const [tasks, setTasks] = useState([]);
-  const [error, setError] = useState(null);
   const { setTodosCount } = useContext(StatusLengthContext);
 
-  useEffect(() => {
-    getTasks();
-  }, []);
+
+  // useEffect(() => {
+  //   getTasks();
+  // }, []);
 
   useEffect(() => {
     if (Array.isArray(tasks)) {
@@ -21,20 +22,31 @@ const TodoList = ({ status }) => {
     }
   }, [tasks]);
 
-  async function getTasks() {
-    try {
-      const response = await fetch(`${apiBaseUrl}/todos`);
-      const { data } = await response.json();
-      setTasks(data);
-    } catch (error) {
-      setError(error.message);
-    }
-  }
+  // async function getTasks() {
+  //   try {
+  //     const response = await fetch(`${apiBaseUrl}/todos`);
+  //     const { data } = await response.json();
+  //     setTasks(data);
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // }
+
+  const getTasks = () => {
+    const { isLoading, error, data } = useQuery({
+      queryKey: ["repoData"],
+      queryFn: () => fetch(`${apiBaseUrl}/todos`).then((res) => res.json()),
+    });
+
+    if (isLoading) return "Loading...";
+
+    if (error) return "An error has occurred: " + error.message;
+  };
+
   return (
     <>
-      {error && <p className="error-message">Something went wrong!</p>}
       <ul className="todos-list">
-        {tasks
+        {data.data
           .filter((task) => {
             if (status === "completed") {
               return task.isDone;
