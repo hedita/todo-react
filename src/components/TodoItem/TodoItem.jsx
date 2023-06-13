@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
+import { useQuery } from "react-query";
 import "./TodoItem.scss";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { formatDate } from "../../utils";
 import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
 
 const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
-  const [error, setError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
   const { darkMode } = useContext(DarkModeContext);

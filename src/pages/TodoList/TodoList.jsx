@@ -10,11 +10,6 @@ const TodoList = ({ status }) => {
   const [tasks, setTasks] = useState([]);
   const { setTodosCount } = useContext(StatusLengthContext);
 
-
-  // useEffect(() => {
-  //   getTasks();
-  // }, []);
-
   useEffect(() => {
     if (Array.isArray(tasks)) {
       const completedLength = tasks.filter((task) => task.isDone).length;
@@ -22,26 +17,16 @@ const TodoList = ({ status }) => {
     }
   }, [tasks]);
 
-  // async function getTasks() {
-  //   try {
-  //     const response = await fetch(`${apiBaseUrl}/todos`);
-  //     const { data } = await response.json();
-  //     setTasks(data);
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // }
-
-  const getTasks = () => {
-    const { isLoading, error, data } = useQuery({
-      queryKey: ["repoData"],
-      queryFn: () => fetch(`${apiBaseUrl}/todos`).then((res) => res.json()),
-    });
-
-    if (isLoading) return "Loading...";
-
-    if (error) return "An error has occurred: " + error.message;
+  const fetchTodos = async () => {
+    const res = await fetch(`${apiBaseUrl}/todos`);
+    const data = await res.json();
+    setTasks(data.data);
+    return data;
   };
+
+  const { data, isLoading, error } = useQuery("todos", fetchTodos);
+  if (isLoading) return "Loading...";
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <>
@@ -64,7 +49,7 @@ const TodoList = ({ status }) => {
                 createdAt={createdAt}
                 text={text}
                 taskId={id}
-                getTasks={getTasks}
+                getTasks={data}
                 isDone={isDone}
               />
             );
