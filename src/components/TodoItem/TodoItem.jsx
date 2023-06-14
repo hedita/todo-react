@@ -1,27 +1,28 @@
 import React, { useContext, useState } from "react";
-import { useQuery } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import "./TodoItem.scss";
 import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { formatDate } from "../../utils";
 import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
 
-const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
+const deleteTodo = async (taskId) => {
+  await fetch(`${apiBaseUrl}/todos/${taskId}`, {
+    method: "DELETE",
+  });
+};
+
+const TodoItem = ({ text, createdAt, taskId, fetchTodos, isDone }) => {
+  const [error, setError] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
   const { darkMode } = useContext(DarkModeContext);
 
-  const deleteTodo = async () => {
-    try {
-      setError("");
-      await fetch(`${apiBaseUrl}/todos/${taskId}`, {
-        method: "DELETE",
-        headers: requestDefaultHeaders,
-      });
-      getTasks();
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+  const queryClient = useQueryClient();
+  useMutation(deleteTodo(taskId), {
+    onSuccess: () => {
+      queryClient.invalidateQueries("data");
+    },
+  });
 
   const updateStatus = async (event) => {
     try {
@@ -30,7 +31,7 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
         body: JSON.stringify({ isDone: event.target.checked }),
         headers: requestDefaultHeaders,
       });
-      getTasks();
+      fetchTodos();
     } catch (error) {
       setError(error.message);
     }
@@ -49,7 +50,7 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
         headers: requestDefaultHeaders,
       });
       setIsEditing(false);
-      getTasks();
+      fetchTodos();
     } catch (error) {
       setError(error.message);
     }

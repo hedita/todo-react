@@ -49,7 +49,7 @@ const TodoList = ({ status }) => {
                 createdAt={createdAt}
                 text={text}
                 taskId={id}
-                getTasks={data}
+                fetchTodos={fetchTodos}
                 isDone={isDone}
               />
             );
