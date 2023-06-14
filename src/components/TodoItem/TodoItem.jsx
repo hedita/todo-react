@@ -5,24 +5,27 @@ import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { formatDate } from "../../utils";
 import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
 
-const deleteTodo = async (taskId) => {
-  await fetch(`${apiBaseUrl}/todos/${taskId}`, {
-    method: "DELETE",
-  });
-};
+
 
 const TodoItem = ({ text, createdAt, taskId, fetchTodos, isDone }) => {
-  const [error, setError] = useState(false);
+  const [error,setError] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
   const { darkMode } = useContext(DarkModeContext);
+  
+  const deleteTodo = async () => {
+    await fetch(`${apiBaseUrl}/todos/${taskId}`, {
+      method: "DELETE",
+    })
+  };
 
   const queryClient = useQueryClient();
-  useMutation(deleteTodo(taskId), {
+   useMutation(deleteTodo,{
     onSuccess: () => {
-      queryClient.invalidateQueries("data");
-    },
-  });
+      queryClient.invalidateQueries("data")
+    }
+  }
+  )
 
   const updateStatus = async (event) => {
     try {
