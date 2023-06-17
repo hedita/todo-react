@@ -63,7 +63,7 @@ const TodoItem = ({ text, createdAt, taskId, isDone }) => {
         <button
           className={`delete-button ${darkMode ? "dark-mode" : ""}`}
           onClick={() => {
-            mutationDelete.mutate(taskId);
+            mutationDelete.mutate({ taskId });
           }}
         >
           Delete

@@ -16,7 +16,7 @@ export const addTodo = async ({ text }) => {
   return data.data;
 };
 
-export const deleteTodo = async (taskId) => {
+export const deleteTodo = async ({ taskId }) => {
   const res = await fetch(`${apiBaseUrl}/todos/${taskId}`, {
     method: "DELETE",
     headers: requestDefaultHeaders,
