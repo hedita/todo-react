@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import "./TodoItem.scss";
-import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { formatDate } from "../../utils";
 import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
 import { useDeleteTodo } from "../../hooks";

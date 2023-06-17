@@ -6,6 +6,16 @@ export const getTodoList = async () => {
   return data.data;
 };
 
+export const addTodo = async ({ text }) => {
+  const res = await fetch(`${apiBaseUrl}/todos`, {
+    method: "POST",
+    headers: requestDefaultHeaders,
+    body: JSON.stringify({ text }),
+  });
+  const data = await res.json();
+  return data.data;
+};
+
 export const deleteTodo = async (taskId) => {
   const res = await fetch(`${apiBaseUrl}/todos/${taskId}`, {
     method: "DELETE",

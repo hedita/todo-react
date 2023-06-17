@@ -13,6 +13,16 @@ export const useGetTodoList = (options = {}) => {
   });
 };
 
+export const useAddTodo = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: updateStatus,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["todo-list"]);
+    },
+  });
+};
+
 export const useDeleteTodo = () => {
   const queryClient = useQueryClient();
   return useMutation({
