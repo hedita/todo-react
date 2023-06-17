@@ -25,20 +25,10 @@ export const deleteTodo = async ({ taskId }) => {
   return data.data;
 };
 
-export const editTodo = async ({ taskId, newText }) => {
+export const updateTodo = async ({ taskId, newText, isDone }) => {
   const res = await fetch(`${apiBaseUrl}/todos/${taskId}`, {
     method: "PATCH",
-    body: JSON.stringify({ text: newText }),
-    headers: requestDefaultHeaders,
-  });
-  const data = await res.json();
-  return data.data;
-};
-
-export const updateStatus = async ({ taskId, isDone }) => {
-  const res = await fetch(`${apiBaseUrl}/todos/${taskId}`, {
-    method: "PATCH",
-    body: JSON.stringify({ isDone }),
+    body: JSON.stringify({ text: newText, isDone }),
     headers: requestDefaultHeaders,
   });
   const data = await res.json();

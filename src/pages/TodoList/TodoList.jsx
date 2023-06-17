@@ -20,7 +20,7 @@ const TodoList = ({ status }) => {
     },
   });
 
-  if (error) return "An error has occurred: " + error.message;
+  if (isLoading) return "Loading...";
   if (error) return `An error has occurred: ${error.message} `;
 
   return (
