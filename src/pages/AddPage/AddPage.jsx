@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import "./AddPage.scss";
 import { useState } from "react";
-import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
-import { StatusLengthContext } from "../../../StatusLengthContext";
 import { DarkModeContext } from "../ConfigurationPage/DarkModeContext";
 import { useMutation } from "@tanstack/react-query";
 import { addTodo } from "../../api";
@@ -11,7 +9,6 @@ const AddPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const { setTodosCount } = useContext(StatusLengthContext);
   const { darkMode } = useContext(DarkModeContext);
   const mutationAdd = useMutation(addTodo);
 
