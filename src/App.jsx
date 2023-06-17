@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { StatusLengthContext } from "../StatusLengthContext";
 import { DarkModeProvider } from "./pages/ConfigurationPage/DarkModeContext";
 import Main from "./pages/Main/Main";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 const App = () => {
