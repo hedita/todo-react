@@ -2,9 +2,7 @@ import React, { useContext, useState } from "react";
 import "./TodoItem.scss";
 import { formatDate } from "../../utils";
 import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
-import { useDeleteTodo } from "../../hooks";
-import { useEditTodo } from "../../hooks";
-import { useUpdateStatus } from "../../hooks";
+import { useDeleteTodo, useEditTodo, useUpdateStatus } from "../../hooks";
 
 const TodoItem = ({ text, createdAt, taskId, isDone }) => {
   const [error, setError] = useState(false);
