@@ -4,7 +4,7 @@ import { formatDate } from "../../utils";
 import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
 import { useDeleteTodo, useEditTodo, useUpdateStatus } from "../../hooks";
 
-const TodoItem = ({ text, createdAt, taskId, isDone }) => {
+const TodoItem = ({ text, createdAt, taskId, isDone, isLoading }) => {
   const [error, setError] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
@@ -39,6 +39,8 @@ const TodoItem = ({ text, createdAt, taskId, isDone }) => {
             mutationUpdate.mutate({ taskId, isDone: !isDone });
           }}
           defaultChecked={isDone}
+          disabled={isLoading}
+
         />
 
         {isEditing ? (

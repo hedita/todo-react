@@ -34,6 +34,7 @@ const TodoList = ({ status }) => {
               text={text}
               taskId={id}
               isDone={isDone}
+              isLoading={isLoading}
             />
           );
         })}
