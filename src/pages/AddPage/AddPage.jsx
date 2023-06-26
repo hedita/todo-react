@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./AddPage.scss";
 import { useState } from "react";
 import { DarkModeContext } from "../ConfigurationPage/DarkModeContext";
-import { useMutation } from "@tanstack/react-query";
+import { useAddTodo } from "../../hooks";
 import { addTodo } from "../../api";
 
 const AddPage = () => {
@@ -10,7 +10,7 @@ const AddPage = () => {
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const { darkMode } = useContext(DarkModeContext);
-  const mutationAdd = useMutation(addTodo);
+  const mutationAdd = useAddTodo(addTodo);
 
   return (
     <div className="add-container">
