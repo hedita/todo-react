@@ -1,59 +1,21 @@
 import React, { useContext, useState } from "react";
 import "./TodoItem.scss";
-import { apiBaseUrl, requestDefaultHeaders } from "../../../config";
 import { formatDate } from "../../utils";
 import { DarkModeContext } from "../../pages/ConfigurationPage/DarkModeContext";
+import { useDeleteTodo, useEditTodo, useUpdateStatus } from "../../hooks";
 
-const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
-  const [error, setError] = useState("");
+const TodoItem = ({ text, createdAt, taskId, isDone, isLoading }) => {
+  const [error, setError] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
   const { darkMode } = useContext(DarkModeContext);
-
-  const deleteTodo = async () => {
-    try {
-      setError("");
-      await fetch(`${apiBaseUrl}/todos/${taskId}`, {
-        method: "DELETE",
-        headers: requestDefaultHeaders,
-      });
-      getTasks();
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const updateStatus = async (event) => {
-    try {
-      await fetch(`${apiBaseUrl}/todos/${taskId}`, {
-        method: "PATCH",
-        body: JSON.stringify({ isDone: event.target.checked }),
-        headers: requestDefaultHeaders,
-      });
-      getTasks();
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const saveNewTodo = async () => {
-    if (newText === text) {
+  const mutationDelete = useDeleteTodo();
+  const mutationEdit = useEditTodo({
+    onSuccess: () => {
       setIsEditing(false);
-      return;
-    }
-
-    try {
-      await fetch(`${apiBaseUrl}/todos/${taskId}`, {
-        method: "PATCH",
-        body: JSON.stringify({ text: newText }),
-        headers: requestDefaultHeaders,
-      });
-      setIsEditing(false);
-      getTasks();
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+    },
+  });
+  const mutationUpdate = useUpdateStatus();
 
   const editTodo = () => {
     setIsEditing(true);
@@ -73,8 +35,12 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
         <input
           className="isDone-checkbox"
           type="checkbox"
-          onChange={updateStatus}
-          checked={isDone}
+          onChange={() => {
+            mutationUpdate.mutate({ taskId, isDone: !isDone });
+          }}
+          defaultChecked={isDone}
+          disabled={isLoading}
+
         />
 
         {isEditing ? (
@@ -83,7 +49,13 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
             type="text"
             value={newText}
             onChange={handleInputChange}
-            onBlur={saveNewTodo}
+            onBlur={() => {
+              if (newText === text) {
+                setIsEditing(false);
+                return;
+              }
+              mutationEdit.mutate({ taskId, newText });
+            }}
           />
         ) : (
           <p className="todo-text" onClick={editTodo}>
@@ -92,7 +64,9 @@ const TodoItem = ({ text, createdAt, taskId, getTasks, isDone }) => {
         )}
         <button
           className={`delete-button ${darkMode ? "dark-mode" : ""}`}
-          onClick={deleteTodo}
+          onClick={() => {
+            mutationDelete.mutate({ taskId });
+          }}
         >
           Delete
         </button>

@@ -1,62 +1,43 @@
-import React, { useContext } from "react";
-import { useState, useEffect } from "react";
+import React from "react";
 import TodoItem from "../../components/TodoItem/TodoItem";
-import { apiBaseUrl } from "../../../config";
-import { StatusLengthContext } from "../../../StatusLengthContext";
+import { useGetTodoList } from "../../hooks";
 import "./TodoList.scss";
 
 const TodoList = ({ status }) => {
-  const [tasks, setTasks] = useState([]);
-  const [error, setError] = useState(null);
-  const { setTodosCount } = useContext(StatusLengthContext);
+  const { data, isLoading, error } = useGetTodoList({
+    select: (data) => {
+      return data
+        .filter((item) => {
+          if (status === "completed") {
+            return item.isDone;
+          }
+          if (status === "uncompleted") {
+            return !item.isDone;
+          }
+          return data;
+        })
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    },
+  });
 
-  useEffect(() => {
-    getTasks();
-  }, []);
+  if (isLoading) return "Loading...";
+  if (error) return `An error has occurred: ${error.message} `;
 
-  useEffect(() => {
-    if (Array.isArray(tasks)) {
-      const completedLength = tasks.filter((task) => task.isDone).length;
-      setTodosCount({ all: tasks.length, completed: completedLength });
-    }
-  }, [tasks]);
-
-  async function getTasks() {
-    try {
-      const response = await fetch(`${apiBaseUrl}/todos`);
-      const { data } = await response.json();
-      setTasks(data);
-    } catch (error) {
-      setError(error.message);
-    }
-  }
   return (
     <>
-      {error && <p className="error-message">Something went wrong!</p>}
       <ul className="todos-list">
-        {tasks
-          .filter((task) => {
-            if (status === "completed") {
-              return task.isDone;
-            }
-            if (status === "uncompleted") {
-              return !task.isDone;
-            }
-            return tasks;
-          })
-          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-          .map(({ text, id, createdAt, isDone }) => {
-            return (
-              <TodoItem
-                key={id}
-                createdAt={createdAt}
-                text={text}
-                taskId={id}
-                getTasks={getTasks}
-                isDone={isDone}
-              />
-            );
-          })}
+        {data.map(({ text, id, createdAt, isDone }) => {
+          return (
+            <TodoItem
+              key={id}
+              createdAt={createdAt}
+              text={text}
+              taskId={id}
+              isDone={isDone}
+              isLoading={isLoading}
+            />
+          );
+        })}
       </ul>
     </>
   );
