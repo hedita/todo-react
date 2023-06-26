@@ -1,8 +1,7 @@
 import { getTodoList } from "../api";
 import { useQuery } from "@tanstack/react-query";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
-import { deleteTodo } from "../api";
-import { updateTodo } from "../api";
+import { deleteTodo, updateTodo } from "../api";
 
 export const useGetTodoList = (options = {}) => {
   return useQuery({
