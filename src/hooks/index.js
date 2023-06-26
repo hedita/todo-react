@@ -1,4 +1,4 @@
-import { getTodoList } from "../api";
+import { addTodo, getTodoList } from "../api";
 import { useQuery } from "@tanstack/react-query";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { deleteTodo, updateTodo } from "../api";
@@ -14,7 +14,7 @@ export const useGetTodoList = (options = {}) => {
 export const useAddTodo = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: updateStatus,
+    mutationFn: addTodo,
     onSuccess: () => {
       queryClient.invalidateQueries(["todo-list"]);
     },
